@@ -9,6 +9,8 @@ import Header from './components/organisms/Header';
 import MembersPage from './components/pages/MembersPage';
 import AddMemberPage from './components/pages/AddMemberPage';
 import MemberDetailPage from './components/pages/MemberDetailPage';
+import EditBookPage from './components/pages/EditBookPage';
+import EditMemberPage from './components/pages/EditMemberPage';
 
 const App = () => {
   const [books, setBooks] = useState([
@@ -67,9 +69,11 @@ const App = () => {
         <Route path="/books" element={<BooksPage books={books} />} />
         <Route path="/books/add" element={<AddBookPages onAddBook={handleAddBook} />} />
         <Route path="/books/:id" element={<BookDetailPage books={books} />} />
+        <Route path="/books/edit/:isbn" element={<EditBookPage books={books} onUpdateBook={handleUpdateBook} />} />
         <Route path="/members" element={<MembersPage members={members} />} />
         <Route path="/members/add" element={<AddMemberPage onAddMember={handleAddMember} />} />
         <Route path="/members/:id" element={<MemberDetailPage members={members} />} />
+        <Route path="/members/edit/:id" element={<EditMemberPage members={members} onUpdateMember={handleUpdateMember} />} />
       </Routes>
     </Router>
   );
