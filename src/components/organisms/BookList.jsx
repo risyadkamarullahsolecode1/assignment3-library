@@ -1,8 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import CustomButton from '../atoms/Button';
 
-const BookList = ({ books }) => {
+const BookList = () => {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const savedBooks = JSON.parse(localStorage.getItem('books')) || [];
+    setBooks(savedBooks);
+  }, []);
+
+  const handleDelete = (isbn) => {
+    const updatedBooks = books.filter((book) => book.isbn !== isbn);
+    setBooks(updatedBooks);
+    localStorage.setItem('books', JSON.stringify(updatedBooks));
+  };
+
   return (
     <Table striped bordered hover responsive>
       <thead>
@@ -32,6 +46,9 @@ const BookList = ({ books }) => {
               <Link to={`/books/edit/${book.isbn}`} className="ms-2">
                 <Button variant="warning" size="sm">Edit</Button>
               </Link>
+              <CustomButton variant="danger" size="sm" onClick={() => handleDelete(book.isbn)}>
+                  Delete
+              </CustomButton>
             </td>
           </tr>
         ))}

@@ -28,6 +28,7 @@ const MembersPage = () => {
             <th>Full Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Address</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -38,6 +39,7 @@ const MembersPage = () => {
               <td>{member.name}</td>
               <td>{member.email}</td>
               <td>{member.phone}</td>
+              <td>{member.address}</td>
               <td>
                 <Link to={`/members/${member.id}`}>
                   <CustomButton variant="info" size="sm">View</CustomButton>
