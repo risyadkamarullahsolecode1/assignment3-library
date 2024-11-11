@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import MemberForm from '../molecules/MemberForm';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { Container } from 'react-bootstrap';
 
 const AddMemberPage = () => {
   const navigate = useNavigate();
@@ -21,10 +22,10 @@ const AddMemberPage = () => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Add New Member</h1>
       <MemberForm onSubmit={handleAddMember} />
-    </div>
+    </Container>
   );
 };
 
